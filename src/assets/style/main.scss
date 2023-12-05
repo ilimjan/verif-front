@@ -1,0 +1,988 @@
+@import "vars.scss";
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Inter&display=swap');
+
+body {
+  font-family: Inter, sans-serif;
+  font-size: $fontSizeDefault;
+  color: $colorText;
+
+  margin: 0 !important;
+}
+
+button, input, select, textarea {
+  outline: none !important;
+
+  font-family: Inter, sans-serif;
+  font-size: $fontSizeDefault;
+
+  &::placeholder {
+    font-family: Inter, sans-serif;
+    font-size: $fontSizeDefault;
+    color: $colorGray3;
+  }
+}
+
+h1 {
+  font-size: $fontSizeXXL;
+  color: $colorText;
+}
+
+a {
+  color: $colorSecondaryHover;
+}
+
+.ymap-container {
+  height: 100%;
+}
+
+//
+// Кнопка
+// btn-transparent
+// btn-outline
+// btn-solid
+// btn-grey
+// btn-primary
+// btn-secondary
+.btn {
+  display: inline-flex;
+  align-items: center;
+
+  font-size: $fontSizeDefault;
+  text-decoration: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: $colorText;
+
+  padding: 7px 15px;
+  font-weight: 400;
+
+  white-space: nowrap;
+
+  &--wrap {
+    white-space: normal;
+  }
+
+  &[disabled] {
+    color: $colorGray3 !important;
+    background-color: $colorGray1 !important;
+    border-color: $colorGray3 !important;
+
+    img {
+      filter: grayscale(100%) brightness(1.5);
+      -webkit-filter: grayscale(100%) brightness(1.5);
+    }
+
+    pointer-events: none;
+    cursor: not-allowed;
+  }
+
+  img {
+    vertical-align: middle;
+
+    &[left] {
+      margin-right: 10px;
+    }
+
+    &[right] {
+      margin-left: 10px;
+    }
+  }
+
+  span {
+    vertical-align: middle;
+  }
+
+  &:not(:first-of-type) {
+    margin-left: 15px;
+  }
+
+  &.btn-lg {
+    height: $heightInput;
+    //max-height: $heightInput;
+    font-weight: 600;
+    //padding: 8px 15px;
+  }
+
+  &.btn-transparent {
+    &:not(:hover) {
+      border: none;
+      background-color: transparent !important;
+    }
+  }
+
+  &.btn-solid {
+    color: white;
+    border: none;
+
+    &:hover {
+      border: none;
+    }
+
+    &:active {
+      border: none;
+    }
+
+    &.btn-grey {
+      border: 1px solid $colorGray3;
+      color: $colorGray5;
+
+      &:not(:hover) {
+        background-color: white !important;
+      }
+
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+
+      &:active {
+        background-color: rgba(0, 0, 0, 0.1);
+      }
+    }
+
+    &.btn-primary {
+      background-color: $colorPrimary;
+
+      &:hover {
+        background-color: lighten($colorPrimary, 10%);
+      }
+
+      &:active {
+        background-color: lighten($colorPrimary, 5%);
+      }
+    }
+
+    &.btn-secondary {
+      background-color: $colorSecondary;
+
+      &:hover {
+        background-color: lighten($colorSecondary, 10%);
+      }
+
+      &:active {
+        background-color: lighten($colorSecondary, 5%);
+      }
+    }
+
+    &.btn-error {
+      background-color: $colorErrorHover;
+
+      &:hover {
+        background-color: lighten($colorErrorHover, 10%);
+      }
+
+      &:active {
+        background-color: lighten($colorErrorHover, 5%);
+      }
+    }
+  }
+
+  &:not(.btn-solid) {
+    border: none;
+
+    &:hover {
+      //border: none;
+    }
+
+    &:active {
+      //border: none;
+    }
+
+    &.btn-grey {
+      color: $colorText;
+      background-color: $colorGray1;
+
+      &:hover {
+        background-color: lighten($colorGray1, 3%);
+      }
+
+      &:active {
+        background-color: lighten($colorGray1, 1%);
+      }
+    }
+
+    &.btn-primary {
+      color: $colorPrimary;
+      background-color: lighten($colorPrimary, 28%);
+
+      &:hover {
+        background-color: lighten($colorPrimary, 30%);
+      }
+
+      &:active {
+        background-color: lighten($colorPrimary, 28%);
+      }
+    }
+
+    &.btn-warning {
+      color: $colorWarningHover;
+      background-color: lighten($colorWarning, 28%);
+
+      &:hover {
+        background-color: lighten($colorWarning, 30%);
+      }
+
+      &:active {
+        background-color: lighten($colorWarning, 28%);
+      }
+    }
+
+    &.btn-success {
+      color: $colorSuccessHover;
+      background-color: lighten($colorSuccess, 28%);
+
+      &:hover {
+        background-color: lighten($colorSuccess, 30%);
+      }
+
+      &:active {
+        background-color: lighten($colorSuccess, 28%);
+      }
+    }
+
+    &.btn-secondary {
+      color: $colorSecondaryHover;
+      background-color: lighten($colorSecondary, 38%);
+
+      &:hover {
+        background-color: lighten($colorSecondary, 50%);
+      }
+
+      &:active {
+        background-color: lighten($colorSecondary, 45%);
+      }
+    }
+
+    &.btn-error {
+      color: $colorErrorHover;
+      background-color: lighten($colorError, 28%);
+
+      &:hover {
+        background-color: lighten($colorError, 30%);
+      }
+
+      &:active {
+        background-color: lighten($colorError, 28%);
+      }
+    }
+  }
+
+}
+
+// Поле для выбора фильтра
+.magnify {
+  display: inline-block;
+  font-size: $fontSizeDefault;
+  //text-decoration: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: black;
+  border-color: white;
+  width: 100%;
+  padding: 15px 10px;
+  //padding: 7px 15px;
+  font-weight: 400;
+
+  &.btn-outline {
+    border: 1px solid $colorGray3;
+    color: $colorText;
+    background-color: red;
+
+    &:hover {
+    }
+
+    &:active {
+    }
+  }
+
+  &.btn-filter {
+    border: 1px solid white;
+    color: black;
+    background-color: white;
+    opacity: 100;
+
+    &:hover {
+      background-color: #E6E6EB;
+    }
+
+    &:active {
+      background-color: #E6E6EB;
+    }
+  }
+
+  &.btn-grey {
+    border: none;
+    color: black;
+    background-color: $colorGray3;
+
+    &:hover {
+      border: none;
+    }
+
+    &:active {
+      border: none;
+    }
+  }
+
+  &.btn-primary {
+    border: none;
+    color: white;
+    background-color: $colorPrimary;
+
+    &:hover {
+      background-color: lighten($colorPrimary, 10%);
+      border: none;
+    }
+
+    &:active {
+      background-color: lighten($colorPrimary, 5%);
+      border: none;
+    }
+  }
+
+  &.btn-nav-active {
+    background-color: #08B7EB;
+    color: white;
+    border-color: white;
+    border-radius: 0px;
+  }
+
+  &.btn-nav-afk {
+    border-radius: 0px;
+  }
+
+  &.btn-nav-previous {
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+  }
+
+  &.btn-nav-next {
+    border-bottom-left-radius: 0px;
+    border-top-left-radius: 0px;
+  }
+
+  &.btn-warning {
+    border: none;
+    color: $colorWarning;
+    background-color: lighten($colorWarning, 38%);
+
+    &:hover {
+      background-color: lighten($colorWarning, 40%);
+      border: none;
+    }
+
+    &:active {
+      background-color: lighten($colorWarning, 35%);
+      border: none;
+    }
+  }
+
+  &.btn-success {
+    border: none;
+    color: $colorSuccess;
+    background-color: lighten($colorSuccess, 38%);
+
+    &:hover {
+      background-color: lighten($colorSuccess, 40%);
+      border: none;
+    }
+
+    &:active {
+      background-color: lighten($colorSuccess, 35%);
+      border: none;
+    }
+  }
+
+  &.btn-secondary {
+    border: none;
+    color: $colorSecondaryHover;
+    background-color: lighten($colorSecondary, 38%);
+
+    &:hover {
+      background-color: lighten($colorSecondary, 50%);
+      border: none;
+    }
+
+    &:active {
+      background-color: lighten($colorSecondary, 45%);
+      border: none;
+    }
+  }
+
+  &.btn-error {
+    border: none;
+    color: $colorError;
+    background-color: lighten($colorError, 38%);
+
+    &:hover {
+      background-color: lighten($colorError, 40%);
+      border: none;
+    }
+
+    &:active {
+      background-color: lighten($colorError, 35%);
+      border: none;
+    }
+  }
+}
+
+// Поле для ввода
+.inp {
+  height: $heightInput;
+  padding: 11px 15px 11px 15px;
+  font-size: $fontSizeDefault;
+  border-radius: 5px;
+  //padding: 8px 15px;
+  border: 1px solid $colorGray3;
+
+  &.inp-search {
+    padding-left: 40px !important;
+    background-size: 32px;
+    background-position: 5px 2px;
+    background-repeat: no-repeat;
+  }
+
+  &.inp-block {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  &.search-field {
+    border-right: none;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  &:focus {
+    border: 1px solid $colorSecondary;
+  }
+
+  &[disabled] {
+    background-color: rgba(239, 239, 239, 0.3) !important;
+  }
+}
+
+textarea.inp {
+  min-height: 120px;
+
+  &:focus {
+    border: 1px solid $colorSecondary;
+  }
+}
+
+// input-date
+.mx-datepicker {
+  width: 100% !important;
+}
+
+// Комбо-бокс
+.sel {
+  height: $heightInput;
+  border: 1px solid $colorGray3;
+  padding: 10px 11px;
+  border-radius: 5px;
+
+  -moz-appearance:none;
+  -webkit-appearance:none;
+  appearance:none;
+
+  padding-right: 16px;
+  background-repeat: no-repeat;
+  background-position: 99% 50%;
+  background-size: 12px;
+  cursor: pointer;
+
+  &.sel-transparent {
+    height: auto;
+    border: none !important;
+    background-color: transparent;
+    color: $colorSecondary;
+    background-position: 99% 50%;
+    //font-size: $fontSizeLarge;
+  }
+
+  &.sel-outlined {
+    width: 100%;
+    background-color: transparent;
+    color: $colorText;
+  }
+
+  &.sel-block {
+    display: block;
+    width: 100%;
+
+    &:not([disabled]) {
+      background-color: white;
+    }
+  }
+
+  &:focus {
+    border: 1px solid $colorSecondary;
+  }
+
+  &[disabled] {
+    background-color: rgba(239, 239, 239, 0.3) !important;
+  }
+}
+
+// Таблица
+.tbl {
+  text-align: left;
+  border-spacing: 0 !important;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  font-size: $fontSizeDefault;
+  width: 100%;
+
+  th, td {
+    padding: 10px 10px;
+
+    button {
+      display: inline;
+    }
+  }
+
+  tr:hover {
+    background-color: rgba(0, 0, 0, 0.01);
+  }
+
+  thead {
+    background-color: $colorGray1;
+
+    tr {
+      border-bottom: 1px solid $colorGray3;
+    }
+  }
+
+  tbody {
+    tr {
+      background-color: white;
+      border-bottom: 1px solid $colorGray1;
+    }
+  }
+}
+
+// Текст
+.text {
+  &--muted {
+    color: $colorGray3;
+  }
+}
+
+// Формы
+.form {
+  .form-elem {
+    position: relative;
+    margin-bottom: 25px;
+
+    &--indent {
+      padding-top: 25px;
+    }
+
+    &--hr {
+      border-top: 1px solid $colorGray1;
+    }
+
+    :last-of-type {
+      margin-bottom: 0;
+    }
+
+    &__title {
+      display: flex;
+      align-items: center;
+      margin-bottom: 5px;
+      min-height: 27px;
+      font-size: $fontSizeDefault;
+      color: $colorGray6;
+    }
+
+    /*
+    &__prompt_hidden {
+      visibility: hidden;
+    }
+    */
+  }
+
+  .condition .form-elem {
+    margin-bottom: 25px;
+  }
+
+  .form-value {
+    display: flex;
+
+    &:not(:last-of-type) {
+      margin-bottom: 17px;
+    }
+
+    &__title {
+      color: $colorGray6;
+    }
+
+    &__divider {
+      flex: 1 0;
+      border-bottom: 2px dotted $colorGray3;
+    }
+
+    &__value {
+      font-weight: bold;
+    }
+  }
+
+  .form-group {
+    background-color: $colorGray0;
+    border-radius: 4px;
+    padding: 32px;
+    margin-top: 32px;
+
+    h2 {
+      font-size: $fontSizeXL;
+      margin-top: 0;
+      margin-bottom: 48px;
+      font-weight: bold;
+      padding-right: 20%;
+
+      background-size: 24px;
+      background-position: right;
+      background-repeat: no-repeat;
+    }
+
+    h3 {
+      font-size: $fontSizeXL;
+      margin-top: 62px;
+      margin-bottom: 24px;
+      font-weight: bold;
+      padding-right: 20%;
+    }
+
+    h4 {
+      font-size: $fontSizeLargePlus;
+      margin-top: 32px;
+      margin-bottom: 24px;
+      font-weight: bold;
+      padding-right: 20%;
+
+      img {
+        margin-top: 5px;
+        margin-left: 5px;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .form-grid {
+    display: grid;
+    //grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    //grid-template-columns: repeat(auto-fill, minmax(415px, 1fr));
+    grid-gap: 2vw;
+
+    &__elem {
+      display: flex;
+    }
+
+    &__tail {
+      flex: 1 0;
+      margin-left: 20px;
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+
+  .form-inline {
+    margin-top: 18px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+
+    span {
+      margin-right: 10px;
+      flex: 0 0 auto;
+    }
+  }
+}
+
+// Столбцы-колонки
+.row {
+  display: flex;
+  align-items: flex-end;
+
+  &--start {
+    align-items: flex-start;
+  }
+
+  &--centered {
+    align-items: center;
+  }
+
+  .col-50 {
+    flex: 50%;
+    max-width: 50%;
+  }
+
+  .col {
+    flex: 0;
+
+    &:not(:first-of-type) {
+      margin-left: 40px;
+    }
+  }
+
+  .col-full {
+    flex: 1 0;
+
+    &:not(:first-of-type) {
+      margin-left: 40px;
+    }
+  }
+}
+
+// Табы
+.tabs {
+  margin-bottom: 30px;
+
+  .tab {
+    display: inline-block;
+    cursor: pointer;
+
+    font-size: $fontSizeLarge;
+    font-weight: bold;
+    color: $colorGray5;
+    padding: 10px 30px;
+
+    border-bottom: 1px solid $colorGray1;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.02);
+    }
+
+    &:active {
+      background-color: rgba(0, 0, 0, 0.03);
+    }
+
+    &--active {
+      color: $colorSecondary;
+      border-bottom: 2px solid $colorSecondary;
+
+      &:hover {
+        background-color: lighten($colorSecondary, 50%);
+      }
+
+      &:active {
+        background-color: lighten($colorSecondary, 48%);
+      }
+    }
+
+    &[disabled] {
+      pointer-events: none;
+      cursor: not-allowed;
+      color: $colorGray3;
+    }
+  }
+}
+
+// кнопка настройки возле поиска
+.searchbtn {
+  display: inline-block;
+  font-size: $fontSizeDefault;
+  text-decoration: none;
+  //border-radius: 5px;
+  //border-top-left-radius: 0px;
+  //border-bottom-left-radius: 0px;
+  //border-top-left-radius: 0px;
+  //border-bottom-left-radius: 0px;
+  cursor: pointer;
+  color: $colorText;
+
+  padding: 7px 15px;
+  font-weight: 400;
+
+  white-space: nowrap;
+
+  img {
+    vertical-align: middle;
+
+    &[left] {
+      margin-right: 10px;
+    }
+
+    &[right] {
+      margin-left: 10px;
+    }
+  }
+
+  span {
+    vertical-align: middle;
+  }
+
+  //&:not(:first-of-type) {
+  //  margin-left: 15px;
+  //}
+
+  &.btn-lg {
+    height: 40px;
+    //max-height: 40px;
+    font-weight: 600;
+    //padding: 8px 15px;
+  }
+
+  &.btn-transparent {
+    &:not(:hover), &:not(:active) {
+      border: none;
+      background-color: transparent;
+    }
+  }
+
+  &.btn-outline {
+    border: 1px solid $colorGray3;
+    color: $colorText;
+    background-color: white;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.05);
+    }
+
+    &:active {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  &.btn-filter {
+    border: 1px solid $colorGray3;
+    color: $colorGray3;
+    background-color: white;
+    border-left: none;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.05);
+    }
+
+    &:active {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  &.btn-grey {
+    border: none;
+    color: $colorText;
+    background-color: white;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.05);
+      border: none;
+    }
+
+    &:active {
+      background-color: rgba(0, 0, 0, 0.1);
+      border: none;
+    }
+  }
+
+  &.btn-primary {
+    border: none;
+    color: white;
+    background-color: $colorPrimary;
+
+    &:hover {
+      background-color: lighten($colorPrimary, 10%);
+      border: none;
+    }
+
+    &:active {
+      background-color: lighten($colorPrimary, 5%);
+      border: none;
+    }
+  }
+
+  &.btn-warning {
+    border: none;
+    color: $colorWarning;
+    background-color: lighten($colorWarning, 38%);
+
+    &:hover {
+      background-color: lighten($colorWarning, 40%);
+      border: none;
+    }
+
+    &:active {
+      background-color: lighten($colorWarning, 35%);
+      border: none;
+    }
+  }
+
+  &.btn-success {
+    border: none;
+    color: $colorSuccess;
+    background-color: lighten($colorSuccess, 38%);
+
+    &:hover {
+      background-color: lighten($colorSuccess, 40%);
+      border: none;
+    }
+
+    &:active {
+      background-color: lighten($colorSuccess, 35%);
+      border: none;
+    }
+  }
+
+  &.btn-secondary {
+    border: none;
+    color: $colorSecondaryHover;
+    background-color: lighten($colorSecondary, 38%);
+
+    &:hover {
+      background-color: lighten($colorSecondary, 50%);
+      border: none;
+    }
+
+    &:active {
+      background-color: lighten($colorSecondary, 45%);
+      border: none;
+    }
+  }
+
+  &.btn-error {
+    border: none;
+    color: $colorError;
+    background-color: lighten($colorError, 38%);
+
+    &:hover {
+      background-color: lighten($colorError, 40%);
+      border: none;
+    }
+
+    &:active {
+      background-color: lighten($colorError, 35%);
+      border: none;
+    }
+  }
+}
+
+.toCapitalizeWeekDay {
+  input {
+    text-transform: capitalize;
+  }
+}
+
+.multiselect {
+  &.error {
+    .multiselect__tags {
+      border-color: $colorErrorHover;
+    }
+  }
+  &__tag {
+    margin-bottom: 0 !important;
+  }
+}
+
+.required {
+  &::after {
+    content: '*';
+    display: block;
+    margin-left: 5px;
+    color: red;
+  }
+}
